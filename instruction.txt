@@ -1,0 +1,46 @@
+### TRPG Helper Instruction Manual
+
+#### Author: Nightheok
+
+---
+
+**1. How to Run the Program**
+
+To use the TRPG Helper, you need to set the working directory in your terminal to the folder where `trpg_helper.py` is located. For example:
+
+```
+cd /Users/CHEN/Jupyter/trpg_helper
+```
+
+Then, run the script by typing:
+
+```
+python trpg_helper.py
+```
+
+---
+
+**2. Importing Character Data**
+
+To import a character with all associated attributes from an Excel file provided by 丛雨, use the "全导入" feature. Ensure the Excel file is formatted correctly as per the guidelines provided in the tool's documentation.
+
+---
+
+**3. Language Support**
+
+The program supports inputs in both Simplified Chinese and some Traditional Chinese. Note that Traditional Chinese support might have some limitations and can be buggy at times.
+
+---
+
+**4. Distribution and Usage**
+
+TRPG Helper is a non-profit tool, free to distribute. Please ensure that this instruction text file is included with any distribution of the program to provide proper guidance to new users.
+
+---
+
+**Menu Options:**
+
+- **1. My Character**: View detailed information about your character.
+- **2. Check!**: Perform checks and comparisons against your character's stats.
+- **3. Quick Dice**: A utility to quickly roll dice with custom configurations.
+- **4. Manage Characters**: modify your character
