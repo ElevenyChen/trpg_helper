@@ -2,6 +2,7 @@
 
 import random
 import text as text
+import character as oc
 
 def roll_dice():
     """
@@ -32,7 +33,7 @@ def roll_dice():
     
     # Display all dice results and the sum
     print(f"Dice rolls: {results}")
-    print(f"Sum of rolls: {total}\n")
+    print(f"Sum of rolls: {total}")
 
     return total
 
@@ -43,7 +44,8 @@ def check_result(character):
     """
     skill = input("Enter an item to check (e.g., 力量, 敏捷): ")
     skill = text.translate_key(skill)
-    if skill not in character:
+    
+    if skill not in character.keys():
         print("Error: Skill or attribute not found.\n")
         return
 
@@ -71,7 +73,6 @@ def check_result(character):
         
         print(f"Dice roll: {dice_result}")
         print(f"{skill} value: {skill_value}")
-        print(f"Result: {result}\n")
+        print(f"Result: {result}")
     
-    else: print("Error: no dice result.\n")
-
+    else: print("Error: no dice result.")

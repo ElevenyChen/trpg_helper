@@ -16,16 +16,14 @@ def main_menu():
         if choice == "1":
             oc.print_character(oc.Character)
         if choice == "2":
-            dice.check_resuilt(oc.Character)
+            dice.check_result(oc.Character)
         elif choice == "3":
             dice.roll_dice()
         elif choice == "4":
-            oc.modify_character()
+            oc.modify_character(oc.Character)
         elif choice == "24":
             print("Battle tool not implemented yet, sorry.\n")
 
-        else:
-            print("Invalid option. Please try again\n.")
         oc.end_card_check(oc.Character)
             
 

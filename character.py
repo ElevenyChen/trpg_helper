@@ -9,8 +9,16 @@ class Character:
         for key, value in attributes.items():
             setattr(self, key, value)
 
+    def __getitem__(self, key):
+        return getattr(self, key, None)  # Return None if the attribute doesn't exist
+
+    def __setitem__(self, key, value):
+        setattr(self, key, value)
+
+    def keys(self):
+        return set(self.__dict__.keys())
+
     def __str__(self):
-        # Return a string representation of the character for easy printing
         return '\n'.join(f"{key}: {value}" for key, value in self.__dict__.items())
 
 
@@ -64,6 +72,10 @@ def initialize_character():
     print(f"\nWelcome, {character_dict['姓名']}!\n")
     return Character(character_dict)
 
+def check_dic(string, character):
+    character
+
+
 
 def modify_character(character):
     """
@@ -72,9 +84,10 @@ def modify_character(character):
     """
     # Ask the user for an attribute key they want to modify
     attribute_key = input("Enter the attribute you want to modify: ")
+    attribute_key = text.translate_key(attribute_key)
 
     # Check if the attribute key exists in the character dictionary
-    if attribute_key not in character:
+    if attribute_key not in character.keys():
         print(f"Error: The attribute '{attribute_key}' does not exist.\n")
         return 0
 
@@ -120,7 +133,7 @@ def end_card_check(character):
     # HP check
     if character["体力"] == 0:
         print("该角色目前昏迷/濒死！")
-    elif character["体力"] <= (character["hp_og"/2]):
+    elif character["体力"] <= (character["hp_og"]/2):
         print("该角色目前重伤")
     
     # MP check
@@ -160,6 +173,9 @@ def print_character(character):
 
     # Print each attribute, its English equivalent, and value from the character dictionary
     for attr, des in attributes:
-        value = character.get(attr.split()[0], "Error")  # Fetch value using the first part of the Chinese key
+        if character[attr.split()[0]] != None:
+            value = character[attr.split()[0]] # Fetch value using the first part of the Chinese key
+        else: 
+            value = "Error"
+        
         print("{:<15} | {:<10} | {:<15}".format(attr, value, des))
-    print('\n')

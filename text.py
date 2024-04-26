@@ -21,11 +21,7 @@ default_dic = {
     }
 
 def translate_key(input_key):
-    """
-    Translate the input key to the corresponding key in the dictionary using the key_map.
-    """
-    return key_map.get(input_key.lower(), input_key)
-
+    return key_map.get(input_key, input_key)
 
 def description(character):
     """
@@ -37,149 +33,169 @@ def description(character):
     desc = {}
 
     # 力量 (Strength)
-    str_value = character.get("力量", 0)
-    if str_value > 80:
-        desc["力量"] = "超乎超乎常人的力量"
-    elif str_value > 60:
-        desc["力量"] = "超乎常人的力量"
-    elif str_value > 40:
-        desc["力量"] = "有正常人的力量"
-    elif str_value > 15:
-        desc["力量"] = "力量弱小"
-    elif str_value > 0:
-        desc["力量"] = "虚弱，孱弱"
-    else:
+    str_value = character["力量"]
+    if str_value <= 0:
         desc["力量"] = ""
+    elif str_value <= 15:
+        desc["力量"] = "虚弱，孱弱"
+    elif str_value <= 40:
+        desc["力量"] = "力量弱小"
+    elif str_value <= 60:
+        desc["力量"] = "有正常人的力量"
+    elif str_value <= 80:
+        desc["力量"] = "超乎常人的力量"
+    elif str_value < 100:
+        desc["力量"] = "超乎超乎常人的力量"
+    else:
+        desc["力量"] = "你怕是个神话中的人物"
 
     # 体质 (Constitution)
-    con_value = character.get("体质", 0)
-    if con_value > 80:
-        desc["体质"] = "身体素质极好，精神抖擞"
-    elif con_value > 60:
-        desc["体质"] = "健硕，浑身湿透也不会感冒"
-    elif con_value > 40:
-        desc["体质"] = "不会生什么大毛病"
-    elif con_value > 20:
-        desc["体质"] = "体弱多病"
-    elif con_value > 0:
-        desc["体质"] = "常年患病在身"
-    else:
+    con_value = character["体质"]
+    if con_value <= 0:
         desc["体质"] = ""
+    elif con_value <= 20:
+        desc["体质"] = "常年患病在身"
+    elif con_value <= 40:
+        desc["体质"] = "体弱多病"
+    elif con_value <= 60:
+        desc["体质"] = "不会生什么大毛病"
+    elif con_value <= 80:
+        desc["体质"] = "健硕，浑身湿透也不会感冒"
+    elif con_value < 100:
+        desc["体质"] = "身体素质极好，精神抖擞"
+    else:
+        desc["体质"] = "神一般的体质"
 
     # 体型 (Size)
-    siz_value = character.get("体型", 0)
-    if siz_value >= 200:
-        desc["体型"] = "过分了喂！"
-    elif siz_value >= 180:
-        desc["体型"] = "你可能是一头牛"
-    elif siz_value >= 150:
-        desc["体型"] = "你已经是历史上最重的人类了"
-    elif siz_value > 100:
-        desc["体型"] = "大号的人"
-    elif siz_value > 80:
-        desc["体型"] = "不是高就是胖"
-    elif siz_value > 60:
-        desc["体型"] = "普遍身高155-175"
-    elif siz_value > 40:
-        desc["体型"] = "乙女身材"
-    elif siz_value > 20:
-        desc["体型"] = "孩童，身短体瘦"
-    else:
+    siz_value = character["体型"]
+    if siz_value <= 0:
         desc["体型"] = ""
+    elif siz_value <= 20:
+        desc["体型"] = "孩童，身短体瘦"
+    elif siz_value <= 40:
+        desc["体型"] = "乙女身材"
+    elif siz_value <= 60:
+        desc["体型"] = "普遍身高155-175"
+    elif siz_value <= 80:
+        desc["体型"] = "不是高就是胖"
+    elif siz_value <= 100:
+        desc["体型"] = "大号的人"
+    elif siz_value < 150:
+        desc["体型"] = "听说你正在申请身高世界记录？"
+    elif siz_value < 180:
+        desc["体型"] = "你可能是一头牛"
+    elif siz_value < 200:
+        desc["体型"] = "你已经是历史上最重的人类了"
+    else:
+        desc["体型"] = "过分了喂！"
 
     # 敏捷 (Dexterity)
-    dex_value = character.get("敏捷", 0)
-    if dex_value > 80:
-        desc["敏捷"] = "高速而灵活,可以达成超凡的技艺"
-    elif dex_value > 60:
-        desc["敏捷"] = "是一位运动健将"
-    elif dex_value > 40:
-        desc["敏捷"] = "普通人水平"
-    elif dex_value > 20:
-        desc["敏捷"] = "不是很灵活"
-    elif dex_value > 0:
-        desc["敏捷"] = "很不灵活"
-    else:
+    dex_value = character["敏捷"]
+    if dex_value <= 0:
         desc["敏捷"] = ""
+    elif dex_value <= 20:
+        desc["敏捷"] = "很不灵活"
+    elif dex_value <= 40:
+        desc["敏捷"] = "不是很灵活"
+    elif dex_value <= 60:
+        desc["敏捷"] = "普通人水平"
+    elif dex_value <= 80:
+        desc["敏捷"] = "是一位运动健将"
+    elif dex_value < 100:
+        desc["敏捷"] = "高速而灵活,可以达成超凡的技艺"
+    else:
+        desc["敏捷"] = "神级敏捷，超越人类极限"
 
     # 外貌 (Appearance)
-    app_value = character.get("外貌", 0)
-    if app_value > 80:
-        desc["外貌"] = "沉鱼落雁，闭月羞花"
-    elif app_value > 60:
-        desc["外貌"] = "五官端正，仪表堂堂"
-    elif app_value > 40:
-        desc["外貌"] = "人群之中谁也不会看你一眼之后就忘不掉你容颜"
-    elif app_value > 20:
-        desc["外貌"] = "有些难看"
-    elif app_value > 0:
-        desc["外貌"] = "用脸就能恐惧敌人...或队友"
-    else:
+    app_value = character["外貌"]
+    if app_value <= 0:
         desc["外貌"] = ""
-
-     # 智力 (Intelligence)
-    int_value = character.get("智力", 0)
-    if int_value > 80:
-        desc["智力"] = "天才级水准"
-    elif int_value > 60:
-        desc["智力"] = "可以自主进行发明创造"
-    elif int_value > 40:
-        desc["智力"] = "有着普通人的灵光一现"
-    elif int_value > 20:
-        desc["智力"] = "理解知识要耗费比普通人更多的时间"
-    elif int_value > 0:
-        desc["智力"] = "脑子是个好东西，可惜。。。"
+    elif app_value <= 20:
+        desc["外貌"] = "用脸就能恐惧敌人...或队友"
+    elif app_value <= 40:
+        desc["外貌"] = "有些难看"
+    elif app_value <= 60:
+        desc["外貌"] = "人群之中谁也不会看你一眼之后就忘不掉你容颜"
+    elif app_value <= 80:
+        desc["外貌"] = "五官端正，仪表堂堂"
+    elif app_value < 100:
+        desc["外貌"] = "沉鱼落雁，闭月羞花"
     else:
+        desc["外貌"] = "令人难以直视的美"
+
+    # 智力 (Intelligence)
+    int_value = character["智力"]
+    if int_value <= 0:
         desc["智力"] = ""
+    elif int_value <= 20:
+        desc["智力"] = "脑子是个好东西，可惜。。。"
+    elif int_value <= 40:
+        desc["智力"] = "理解知识要耗费比普通人更多的时间"
+    elif int_value <= 60:
+        desc["智力"] = "有着普通人的灵光一现"
+    elif int_value <= 80:
+        desc["智力"] = "可以自主进行发明创造"
+    elif int_value < 100:
+        desc["智力"] = "天才级水准"
+    else:
+        desc["智力"] = "超凡脱俗，绝世智慧"
 
     # 意志 (Willpower)
-    pow_value = character.get("意志", 0)
-    if pow_value >= 140:
-        desc["意志"] = "你怕是个假人吧"
-    elif pow_value >= 100:
-        desc["意志"] = "泰山崩于面而色不变"
-    elif pow_value > 80:
-        desc["意志"] = "我心如铁，心坚石穿"
-    elif pow_value > 60:
-        desc["意志"] = "如常人一般会有一定自制力"
-    elif pow_value > 40:
-        desc["意志"] = "痴愚盲目"
-    elif pow_value > 20:
-        desc["意志"] = "尔不过玩物"
-    else:
+    pow_value = character["意志"]
+    if pow_value <= 0:
         desc["意志"] = ""
+    elif pow_value <= 20:
+        desc["意志"] = "尔不过玩物"
+    elif pow_value <= 40:
+        desc["意志"] = "痴愚盲目"
+    elif pow_value <= 60:
+        desc["意志"] = "如常人一般会有一定自制力"
+    elif pow_value <= 80:
+        desc["意志"] = "我心如铁，心坚石穿"
+    elif pow_value < 100:
+        desc["意志"] = "泰山崩于面而色不变"
+    elif pow_value < 140:
+        desc["意志"] = "钢铁之心，还能看见鬼"
+    else:
+        desc["意志"] = "你怕是个假人吧"
 
     # 教育 (Education)
-    edu_value = character.get("教育", 0)
-    if edu_value > 80:
-        desc["教育"] = "饱读诗书，满腹经纶"
-    elif edu_value > 60:
-        desc["教育"] = "是重点大学的学生，或是普通大学的研究生"
-    elif edu_value > 40:
-        desc["教育"] = "高中毕业"
-    elif edu_value > 20:
-        desc["教育"] = "小学毕业"
-    elif edu_value > 0:
-        desc["教育"] = "目不识丁"
-    else:
+    edu_value = character["教育"]
+    if edu_value <= 0:
         desc["教育"] = ""
+    elif edu_value <= 20:
+        desc["教育"] = "目不识丁"
+    elif edu_value <= 40:
+        desc["教育"] = "小学毕业"
+    elif edu_value <= 60:
+        desc["教育"] = "高中毕业"
+    elif edu_value <= 80:
+        desc["教育"] = "是重点大学的学生，或是普通大学的研究生"
+    elif edu_value < 100:
+        desc["教育"] = "饱读诗书，满腹经纶"
+    else:
+        desc["教育"] = "博学之士，知无不言"
 
     # 幸运 (Luck)
-    luck_value = character.get("幸运", 0)
-    if luck_value > 80:
-        desc["幸运"] = "被幸运女神所眷顾"
-    elif luck_value > 60:
-        desc["幸运"] = "在马路边捡到100块"
-    elif luck_value > 40:
-        desc["幸运"] = "命格平庸"
-    elif luck_value > 20:
-        desc["幸运"] = "霉运连连"
-    elif luck_value > 0:
-        desc["幸运"] = "克夫克妻"
-    else:
+    luck_value = character["幸运"]
+    if luck_value <= 0:
         desc["幸运"] = ""
+    elif luck_value <= 20:
+        desc["幸运"] = "克夫克妻"
+    elif luck_value <= 40:
+        desc["幸运"] = "霉运连连"
+    elif luck_value <= 60:
+        desc["幸运"] = "命格平庸"
+    elif luck_value <= 80:
+        desc["幸运"] = "在马路边捡到100块"
+    elif luck_value < 100:
+        desc["幸运"] = "被幸运女神所眷顾"
+    else:
+        desc["幸运"] = "命运之子，天选之人"
 
     return desc
+
+
 
 key_map = {
     "str": "力量", "力量": "力量", "力量": "力量",
