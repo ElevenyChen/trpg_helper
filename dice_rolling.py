@@ -80,6 +80,7 @@ def check_result(character):
     print(f"Dice roll: {dice_result}")
     print(f"{skill} value: {skill_value}")
     print(f"Result: {result}")
+    print(f"【{character["姓名"]}】: 【{skill}】检定【{result}】")
 
 
 def check_result_lucky(character):

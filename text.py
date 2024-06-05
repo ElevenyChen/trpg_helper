@@ -1,11 +1,7 @@
 # piles of text
 
-# values when game start
 """
-Keeps only one for convenience
-[理智] = san;
-[体力] = hp;
-[魔法] = mp;
+values when game start
 """
 default_dic = {
     "姓名": "伦道夫.卡特",
@@ -198,7 +194,7 @@ def description(character):
 
 
 key_map = {
-    "str": "力量", "力量": "力量", "力量": "力量",
+    "str": "力量", "力量": "力量",
     "dex": "敏捷", "敏捷": "敏捷", "敏捷": "敏捷",
     "pow": "意志", "意志": "意志", "意志": "意志",
     "con": "体质", "體質": "体质", "体质": "体质",

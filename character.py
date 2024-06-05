@@ -137,6 +137,10 @@ def end_card_check(character):
         print("该角色可能进入疯狂状态")
     
     print("\n")
+
+
+def get_name(character):
+    return character["姓名"]
     
 
 def print_character(character):
